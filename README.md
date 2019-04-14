@@ -23,5 +23,5 @@ PYTHON EXAMPLE
 2. Write `Dockerfile` for the container contains the language you desired.
 3. Edit `extensions.txt`, add extension ID you want to use.
    1. or put `.visx` files in `./vsixes`.
-4. Edit `docker-compose.yml` and `.env` file.
+4. Edit `docker-compose.yml`, `.env` and `settings.json` file.
 
