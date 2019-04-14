@@ -15,7 +15,7 @@ PYTHON EXAMPLE
 1. Go to `env-sample/python`.
 2. Make a `.env` file from `.env-sample`, fill blanks.
 3. `docker-compose up` and access `https://localhost:8443`
-4. 
+4. Python environment with some extensions there.
 
 ## Make your own development environment
 
