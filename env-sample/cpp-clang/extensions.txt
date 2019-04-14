@@ -1,0 +1,23 @@
+# Editor View
+smukkekim.theme-setimonokai
+vscode-icons-team.vscode-icons
+
+
+# Edit field
+shardulm94.trailing-spaces
+coenraads.bracket-pair-colorizer
+wayou.vscode-todo-highlight
+
+# Input support
+mitaki28.vscode-clang
+esbenp.prettier-vscode
+
+# Ninja
+surajbarkale.ninja
+
+# Language pack
+ms-ceintl.vscode-language-pack-ja
+
+#
+editorconfig.editorconfig
+formulahendry.terminal
