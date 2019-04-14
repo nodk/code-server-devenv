@@ -15,13 +15,7 @@ RUN /tmp/install-extensions.sh /tmp/extensions.txt /tmp/vsixes
 
 FROM ${base_env_image}
 
-#RUN apt-get update && apt-get install -y locales
-#RUN locale-gen ja_JP.UTF-8
-#ENV LANG=ja_JP.UTF-8
-#ENV LC_ALL=ja_JP.UTF-8
-
 RUN adduser --gecos '' --disabled-password coder && gpasswd -a coder sudo
-    #echo "coder ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/nopasswd
 
 USER coder
 # We create first instead of just using WORKDIR as when WORKDIR creates, the user is root.
