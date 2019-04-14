@@ -26,6 +26,6 @@ COPY --from=cs /usr/local/bin/code-server /usr/local/bin/code-server
 RUN mkdir -p /home/coder/.local/share/code-server
 COPY --from=ext --chown=coder:coder /tmp/.code-server/extensions /home/coder/.local/share/code-server/extensions
 ARG lang_dir
-COPY ${lang_dir}/settings.json /root/.code-server/User/settings.json
+COPY ${lang_dir}/settings.json /home/coder/.local/share/code-server/settings.json
 
 CMD ["code-server", "/home/coder/project"]
