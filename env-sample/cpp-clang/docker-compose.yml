@@ -10,12 +10,11 @@ services:
     image : code-server-devenv/vscode
   code-server:
     build:
-      dockerfile: common/base/Dockerfile
-      context: ${ROOT_DIR}
+      dockerfile: ${ROOT_DIR}/common/base/Dockerfile
+      context: .
       args:
         base_env_image: ${BASE_ENV_IMAGE}
         vscode_image: code-server-devenv/vscode
-        lang_dir: ${LANG_DIR}
     init: true
     container_name: code-server
     image: code-server-${BASE_ENV_IMAGE}

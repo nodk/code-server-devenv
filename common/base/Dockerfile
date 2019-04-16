@@ -5,13 +5,12 @@ FROM codercom/code-server AS cs
 FROM ${vscode_image} AS ext
 
 # Copy extensions info
-COPY common/scripts/install-extensions.sh /tmp/
-ARG lang_dir
-COPY ${lang_dir}/extensions.txt /tmp/
-COPY ${lang_dir}/vsixes /tmp/vsixes
+COPY extensions.txt /tmp/
+COPY vsixes /tmp/vsixes
 
 # Install vscode extensions
-RUN /tmp/install-extensions.sh /tmp/extensions.txt /tmp/vsixes
+RUN grep -v -e '^\s*#' -e '^\s*$' /tmp/extensions.txt | awk '{system("code --user-data-dir --extensions-dir /tmp/.code-server/extensions --install-extension "$1)}' && \
+    ls /tmp/vsixes/*.vsix | awk '{system("code --user-data-dir --extensions-dir /tmp/.code-server/extensions --install-extension "$1)}'
 
 FROM ${base_env_image}
 
@@ -25,7 +24,6 @@ WORKDIR /home/coder/project
 COPY --from=cs /usr/local/bin/code-server /usr/local/bin/code-server
 RUN mkdir -p /home/coder/.local/share/code-server
 COPY --from=ext --chown=coder:coder /tmp/.code-server/extensions /home/coder/.local/share/code-server/extensions
-ARG lang_dir
-COPY ${lang_dir}/settings.json /home/coder/.local/share/code-server/settings.json
+COPY settings.json /home/coder/.local/share/code-server/settings.json
 
 CMD ["code-server", "/home/coder/project"]
