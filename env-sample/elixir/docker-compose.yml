@@ -1,0 +1,40 @@
+version: '3.7'
+services:
+  env-base: #build only
+    #Uncomment below if you use your original dockerfile for python
+    # to use some libraries (e.g. numpy, pep8), see ./Dockerfile .
+    #build:
+    #  context: .
+    image : ${BASE_ENV_IMAGE}
+  vscode: #build only
+    build:
+      context: ${ROOT_DIR}/common/vscode
+    image : code-server-devenv/vscode
+  code-server:
+    build:
+      dockerfile: ${ROOT_DIR}/common/base/Dockerfile
+      context: .
+      args:
+        base_env_image: ${BASE_ENV_IMAGE}
+        vscode_image: code-server-devenv/vscode
+    init: true
+    container_name: code-server
+    image: code-server-${BASE_ENV_IMAGE}
+    ports:
+      - "8443:8443"
+    #use default user (coder 1000:1000),
+    volumes:
+      - "${WORKSPACE_DIR}:/home/coder/project"
+      - "${CERT}:/tmp/certs/certificate.crt"
+      - "${CERT_KEY}:/tmp/certs/key.key"
+    command: >
+      bash -c "code-server /home/coder/project --password ${PASS}
+           --cert=/tmp/certs/certificate.crt --cert-key=/tmp/certs/key.key"
+
+    # or another user.
+    #volumes:
+    #  - "${WORKSPACE_DIR}:/home/another-coder/project"
+    #user: "1001:1001"
+    #command: >
+    #  bash -c "cp /home/coder/.local/share/code-server/extensions /home/coder/.local/share/code-server/extensions -r &&
+    #           code-server /home/another-coder/project"
