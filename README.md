@@ -17,7 +17,7 @@ PYTHON EXAMPLE
 3. `docker-compose up` and access `https://localhost:8443`
 4. Python environment with some extensions there.
 
-## Make your own development environment
+## Make your custom environments
 
 1. Copy from `env-sample/`.
 2. Write `Dockerfile` for the container contains the language you desired.
@@ -28,4 +28,4 @@ PYTHON EXAMPLE
 ### Limitations
 Assume ubuntu based Dockerfile at 2.
 
-Edit [this line](./common/Dockerfile#L6) if you want to use non debian environment (CentOS, Alpine, etc.)
+Edit [this line](./common/Dockerfile#L6-L10) if you want to use non debian environment (CentOS, Alpine, etc.)
