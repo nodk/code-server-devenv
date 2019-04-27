@@ -6,13 +6,9 @@ services:
     #build:
     #  context: .
     image : ${BASE_ENV_IMAGE}
-  vscode: #build only
-    build:
-      context: ${ROOT_DIR}/common/vscode
-    image : code-server-devenv/vscode
   code-server:
     build:
-      dockerfile: ${ROOT_DIR}/common/base/Dockerfile
+      dockerfile: ${ROOT_DIR}/common/Dockerfile
       context: .
       args:
         base_env_image: ${BASE_ENV_IMAGE}
