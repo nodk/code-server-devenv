@@ -28,4 +28,4 @@ PYTHON EXAMPLE
 ### Limitations
 Assume ubuntu based Dockerfile at 2.
 
-Edit [this line](./common/Dockerfile#L6-L10) if you want to use non debian environment (CentOS, Alpine, etc.)
+Edit [these lines](./common/Dockerfile#L6-L10) if you want to use non debian environment (CentOS, Alpine, etc.)
