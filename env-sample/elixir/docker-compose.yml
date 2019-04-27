@@ -26,11 +26,3 @@ services:
     command: >
       bash -c "code-server /home/coder/project --password ${PASS}
            --cert=/tmp/certs/certificate.crt --cert-key=/tmp/certs/key.key"
-
-    # or another user.
-    #volumes:
-    #  - "${WORKSPACE_DIR}:/home/another-coder/project"
-    #user: "1001:1001"
-    #command: >
-    #  bash -c "cp /home/coder/.local/share/code-server/extensions /home/coder/.local/share/code-server/extensions -r &&
-    #           code-server /home/another-coder/project"
