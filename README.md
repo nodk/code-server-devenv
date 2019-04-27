@@ -25,3 +25,7 @@ PYTHON EXAMPLE
    1. or put `.visx` files in `./vsixes`.
 4. Edit `docker-compose.yml`, `.env` and `settings.json` file.
 
+### Limitations
+Assume ubuntu based Dockerfile at 2.
+
+Edit [this line](./common/Dockerfile#L6) if you want to use non debian environment (CentOS, Alpine, etc.)
